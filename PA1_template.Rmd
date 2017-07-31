@@ -27,8 +27,8 @@ hist(hd$total_steps, col = "blue")
 
 Mean and median number of steps taken each day
 ```{r}
-smean <- mean(df$step, na.rm = TRUE)
-smed <- median(df$step, na.rm = TRUE)
+smean <- mean(hd$total_steps, na.rm = TRUE)
+smed <- median(hd$total_steps, na.rm = TRUE)
 stats1 <- c(smean,smed)
 names(stats1) <- c("mean","median")
 stats1
@@ -69,8 +69,8 @@ chd <- comp %>%
         summarise(total_steps = sum(steps))
 
 hist(chd$total_steps, col = "blue")
-cmean <- mean(comp$step, na.rm = TRUE)
-cmed <- median(comp$step, na.rm = TRUE)
+cmean <- mean(chd$total_steps, na.rm = TRUE)
+cmed <- median(chd$total_steps, na.rm = TRUE)
 stats2 <- c(cmean,cmed)
 names(stats2) <- c("mean","median")
 ```
@@ -112,4 +112,4 @@ qplot(interval,ms,data = sd, facets = . ~ weekday.type, geom = "line", color = w
       ylab = "Average Step")
 ```
 
-All of the R code needed to reproduce the results (numbers, plots, etc.) in the report
+##All of the R code needed to reproduce the results (numbers, plots, etc.) in the report

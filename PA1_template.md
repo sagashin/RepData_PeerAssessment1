@@ -20,26 +20,7 @@ Histogram of the total number of steps taken each day
 ```r
 library(ggplot2)
 library(dplyr)
-```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 hd <- df %>% 
         group_by(date) %>% 
         summarise(total_steps = sum(steps))
@@ -52,16 +33,16 @@ hist(hd$total_steps, col = "blue")
 Mean and median number of steps taken each day
 
 ```r
-smean <- mean(df$step, na.rm = TRUE)
-smed <- median(df$step, na.rm = TRUE)
+smean <- mean(hd$total_steps, na.rm = TRUE)
+smed <- median(hd$total_steps, na.rm = TRUE)
 stats1 <- c(smean,smed)
 names(stats1) <- c("mean","median")
 stats1
 ```
 
 ```
-##    mean  median 
-## 37.3826  0.0000
+##     mean   median 
+## 10766.19 10765.00
 ```
 
 Time series plot of the average number of steps taken
@@ -148,8 +129,8 @@ hist(chd$total_steps, col = "blue")
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 
 ```r
-cmean <- mean(comp$step, na.rm = TRUE)
-cmed <- median(comp$step, na.rm = TRUE)
+cmean <- mean(chd$total_steps, na.rm = TRUE)
+cmed <- median(chd$total_steps, na.rm = TRUE)
 stats2 <- c(cmean,cmed)
 names(stats2) <- c("mean","median")
 ```
@@ -160,8 +141,8 @@ stats2
 ```
 
 ```
-##     mean   median 
-## 36.19871  0.00000
+##    mean  median 
+## 10875.7 11080.0
 ```
 mean and median for non-imputed dataset
 
@@ -170,8 +151,8 @@ stats1
 ```
 
 ```
-##    mean  median 
-## 37.3826  0.0000
+##     mean   median 
+## 10766.19 10765.00
 ```
 Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 
@@ -210,4 +191,4 @@ qplot(interval,ms,data = sd, facets = . ~ weekday.type, geom = "line", color = w
 
 ![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18-1.png)
 
-All of the R code needed to reproduce the results (numbers, plots, etc.) in the report
+##All of the R code needed to reproduce the results (numbers, plots, etc.) in the report
